@@ -6,6 +6,7 @@ import pandas as pd
 import plotly.express as px
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import os
 
 # Style
 title_style = {
@@ -69,8 +70,8 @@ def load_data(file_path, country):
 
 
 # Read data
-data_path_partido = '../data/encuestas_por_partido_{}_2023.csv'
-data_path_candidato = '../data/encuestas_por_candidato_{}_2023.csv'
+data_path_partido = os.path.join(os.path.dirname(__file__), 'data', 'encuestas_por_partido_{}_2023.csv')
+data_path_candidato = os.path.join(os.path.dirname(__file__), 'data', 'encuestas_por_candidato_{}_2023.csv')
 countries = ['argentina', 'ecuador', 'guatemala']
 
 polls_all_countries_partido = pd.concat(
@@ -80,6 +81,7 @@ polls_all_countries_candidato = pd.concat(
 
 # App
 app = dash.Dash(__name__)
+# server = app.server
 
 # App layout
 app.layout = html.Div([
