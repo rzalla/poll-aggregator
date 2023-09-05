@@ -4,3 +4,4 @@ dash>=1.0.0
 plotly>=5.0.0
 kaleido
 statsmodels
+gunicorn
